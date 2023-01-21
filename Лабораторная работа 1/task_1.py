@@ -136,7 +136,7 @@ class Parking:
 
         number_for_the_disabled = math.floor((self.width_ * self.length_) / (self.width_of_parking_space *
                                                                              self.length_of_parking_space) * 10 / 100)
-        return math.floor(number_for_the_disabled)
+        return number_for_the_disabled
 
 
 class Bucket:
