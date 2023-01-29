@@ -38,7 +38,7 @@ class Book:
 
 
 class Library:
-    def __init__(self, books=None):
+    def __init__(self, books=[]):
         """
         Создание и подготовка к работе объекта "Library"
         :param books: Список книг
@@ -47,6 +47,9 @@ class Library:
             self.books = []
         else:
             self.books = books
+            
+        if not isinstance(books, list):
+            raise TypeError('Список книг должен быть типа list')
 
     def get_next_book_id(self):
         if len(self.books) == 0:  # Если книг в библеотеке нет, то возвращаем 1.
