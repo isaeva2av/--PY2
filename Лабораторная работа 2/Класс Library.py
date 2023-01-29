@@ -43,10 +43,10 @@ class Library:
         Создание и подготовка к работе объекта "Library"
         :param books: Список книг
         """
-        if books is None:  # Если аргумент отсутствует, то библиотека инициализируется с пустым списком книг.
-            self.books = []
-        else:
+        if books is not None:  
             self.books = books
+        else:
+            self.books = []  # Если аргумент отсутствует, то библиотека инициализируется с пустым списком книг.
             
         if not isinstance(books, list):
             raise TypeError('Список книг должен быть типа list')
