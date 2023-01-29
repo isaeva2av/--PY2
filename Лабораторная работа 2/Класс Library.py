@@ -61,7 +61,7 @@ class Library:
         for index, book in enumerate(self.books):  # Если книга существует, то возвращаем индекс списка.
             if book.id_ == id_:
                 return index
-        raise ValueError("Книги с запрашиваемым id не существует")
+            raise ValueError("Книги с запрашиваемым id не существует")
 
 
 if __name__ == '__main__':
