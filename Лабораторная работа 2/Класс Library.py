@@ -14,10 +14,22 @@ BOOKS_DATABASE = [
 
 class Book:
     def __init__(self, id_: int, name: str, pages: int):
+        if not isinstance(id_, int):
+            raise TypeError('Идентификатор книги должен быть типа int')
+        if id_ <= 0:
+            raise ValueError('Идентификатор книги должен быть положительным числом')
         self.id_ = id_
-        self.name = name
-        self.pages = pages
 
+        if not isinstance(name, str):
+            raise TypeError('Название книги должно быть типа str')
+        self.name = name
+
+        if not isinstance(pages, int):
+            raise TypeError('Количество страниц в книге должно быть типа int')
+        if pages <= 0:
+            raise ValueError('Количество страниц в книге должно быть положительным числом')
+        self.pages = pages
+        
     def __str__(self) -> str:
         return f'Книга "{self.name}"'
 
@@ -27,6 +39,10 @@ class Book:
 
 class Library:
     def __init__(self, books=None):
+        """
+        Создание и подготовка к работе объекта "Library"
+        :param books: Список книг
+        """
         if books is None:  # Если аргумент отсутствует, то библиотека инициализируется с пустым списком книг.
             self.books = []
         else:
@@ -42,7 +58,6 @@ class Library:
         for index, book in enumerate(self.books):  # Если книга существует, то возвращаем индекс списка.
             if book.id_ == id_:
                 return index
-        else:
             raise ValueError("Книги с запрашиваемым id не существует")
 
 
