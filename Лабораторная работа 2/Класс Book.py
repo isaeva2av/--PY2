@@ -15,16 +15,33 @@ BOOKS_DATABASE = [
 # TODO написать класс Book
 class Book:
     def __init__(self, id_: int, name: str, pages: int):
+       """
+               Создание и подготовка к работе объекта "Книга"
+               :param id_: Идентификатор книги
+               :param name: Название книги
+               :param pages: Количество страниц в книге
+               """
+        if not isinstance(id_, int):
+            raise TypeError('Идентификатор книги должен быть типа int')
+        if id_ <= 0:
+            raise ValueError('Идентификатор книги должен быть положительным числом')
         self.id_ = id_
-        self.name = name
-        self.pages = pages
 
+        if not isinstance(name, str):
+            raise TypeError('Название книги должно быть типа str')
+        self.name = name
+
+        if not isinstance(pages, int):
+            raise TypeError('Количество страниц в книге должно быть типа int')
+        if pages <= 0:
+            raise ValueError('Количество страниц в книге должно быть положительным числом')
+        self.pages = pages
+        
     def __str__(self) -> str:
         return f'Книга "{self.name}"'
 
     def __repr__(self):
         return f'{self.__class__.__name__}(id_={self.id_}, name={self.name!r}, pages={self.pages})'
-
 
 if __name__ == '__main__':
     # инициализируем список книг
