@@ -71,7 +71,7 @@ class AudioBook:
     def duration(self, new_duration: float) -> None:
         if not isinstance(new_duration, float):
             raise TypeError("Продолжительность должна быть типа float")
-        if not new_duration >= 0:
+        if new_duration <= 0:
             raise ValueError("Продолжительность не может иметь отрицательное значение")
         self._duration = new_duration
 
